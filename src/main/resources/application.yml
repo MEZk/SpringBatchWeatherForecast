@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    hikari:
+      username: postgres
+      password: postgres
+      connection-test-query: SELECT 1
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        temp.use_jdbc_metadata_defaults: false
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+  flyway:
+    user: postgres
+    password: postgres
+    url: ${spring.datasource.url}
+    baseline-on-migrate: true
+  batch:
+    job:
+      enabled: false
+    initialize-schema: always
+
+
+
